@@ -1,7 +1,7 @@
 import React from "react";
 import mapboxgl from "mapbox-gl";
 import "./Map.css";
-import { Typography } from "@material-ui/core";
+import { Typography, Paper } from "@material-ui/core";
 class Map extends React.Component {
   constructor() {
     super();
@@ -17,7 +17,7 @@ class Map extends React.Component {
     mapboxgl.accessToken =
       "pk.eyJ1IjoiZGVhcnZpcDAiLCJhIjoiY2p3cmx0Nm94MWlnNDQ4cGxndGJ2NDk5ayJ9.7RAd-OPulAnduD9tg4S5OA";
     // create mapbox object
-    const map = new mapboxgl.Map({
+    var map = new mapboxgl.Map({
       container: this.mapRef.current,
       style: "mapbox://styles/mapbox/light-v10",
       center: [this.state.lng, this.state.lat],
@@ -34,13 +34,13 @@ class Map extends React.Component {
 
   render() {
     return (
-      <Typography paragraph>
+      <Paper>
         <div className="sidebarStyle">
           Longitude: {this.state.lng} | Latitude: {this.state.lat} | Zoom:{" "}
           {this.state.zoom}
         </div>
         <div style={{ width: "100%", height: "100vh" }} ref={this.mapRef}></div>
-      </Typography>
+      </Paper>
     );
   }
 }
